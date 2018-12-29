@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.anweitech.teacher.domain" >
+
+
+
+	<class name="StudentAll" >
+		<id name="sid"  column="sid"/>
+		<property name="sname"  column="sname"/>
+		<property name="slogtime"  column="slogtime"/>
+		<property name="gkeyid" column="gkeyid"/>
+		<property name="gtime"  column="gtime"/>
+		<property name="nodeid"  column="nodeid"/>
+		<property name="nodetime"  column="nodetime" />
+		<property name="netkeyid"  column="netkeyid" />
+		<property name="nettime"   column="nettime"/>
+		<property name="gcnonce"   column="gcnonce"/>
+		<property name="gctime"  column="gctime" />
+		<property name="ncnumber"  column="ncnumber" />
+		<property name="nctime"  column="nctime" />
+		<property name="netcnumber"  column="netcnumber" />
+		<property name="netctime"  column="netctime" />
+		<property name="ckey"  column="ckey" />
+		<property name="cvalue"  column="cvalue" />
+		<property name="ctime"  column="ctime" />
+		<property name="uuid"  column="uuid" />
+		<property name="sgroup"  column="sgroup" />
+		<property name="level"  column="level" />
+
+	</class>
+
+</hibernate-mapping>

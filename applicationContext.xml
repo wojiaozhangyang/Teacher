@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop" 
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:amq="http://activemq.apache.org/schema/core"  
+    	xmlns:jms="http://www.springframework.org/schema/jms" 
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+							http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd 
+							http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+							http://www.springframework.org/schema/jms  
+        					http://www.springframework.org/schema/jms/spring-jms-4.0.xsd  
+        					http://activemq.apache.org/schema/core  
+        					http://activemq.apache.org/schema/core/activemq-core-5.8.0.xsd"> 
+    
+
+	<!-- 读取db.properties文件 -->
+	<context:property-placeholder location="classpath:db.properties" />
+	
+      <!-- activemq连接工厂   -->
+      <amq:connectionFactory id="amqConnectionFactory" 
+    					   brokerURL="${mq.brokerURL}" 
+    					   userName="${mq.userName}" 
+    					   password="${mq.password}" 
+    					   />				   
+ 
+      <!--spring连接工厂，管理activemq连接工厂 -->  
+      <bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">  
+        	<!--管理对象，对应activemq连接工厂  -->  
+	        <property name="targetConnectionFactory" ref="amqConnectionFactory"></property>  
+	        <!--session缓存数量  -->  
+	        <property name="sessionCacheSize" value="100"/>  
+      </bean> 
+      
+      <!--定义消息队列  -->  
+      <bean id="tttQueueDestination" class="org.apache.activemq.command.ActiveMQQueue">  
+        <!--消息队列名称  -->  
+        <constructor-arg>  
+			<value>tttQueueDestination</value>  
+        </constructor-arg>  
+      </bean> 
+      
+      <!--加入监听器  -->  
+      <bean id="queueMessageListener" class="com.anweitech.teacher.pojo.QueueMessageListener" />
+      
+      <!-- 显示注入消息监听容器（Queue），配置连接工厂，监听的目标是demoQueueDestination，监听器是上面定义的监听器 -->  
+      <bean id="queueListenerContainer"  
+			class="org.springframework.jms.listener.DefaultMessageListenerContainer">  
+			<property name="connectionFactory" ref="connectionFactory" />  
+			<property name="destination" ref="tttQueueDestination" />  
+			<property name="messageListener" ref="queueMessageListener" />  
+      </bean> 
+      
+	<!-- ======================================================================================= -->	
+
+	<!-- 配置c3p0连接池 -->
+	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" >
+
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}" />
+		<property name="driverClass" value="${jdbc.driverClass}" />
+		<property name="user" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>  
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"></property>  
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>  
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"></property>  
+        <property name="maxStatements" value="${jdbc.maxStatements}"></property>  
+	</bean>
+			
+	<!-- 核心事务管理器 -->
+	<bean name="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager" >
+
+		<property name="sessionFactory" ref="sessionFactory" ></property>
+
+	</bean>
+	
+	
+	<!-- 配置通知 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager" >
+		<tx:attributes>
+			<tx:method name="remove*" isolation="DEFAULT" propagation="REQUIRED" read-only="false" />
+			<tx:method name="add*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+			<tx:method name="save*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+			<tx:method name="updata*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+			<tx:method name="find*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置将通知织入目标对象
+		   配置切点
+	                配置切面 -->
+	<aop:config>
+
+		<aop:pointcut expression="execution(* com.anweitech.teacher.service.impl.StudentServiceImpl.*(..))" id="txPc"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPc" />
+
+	</aop:config>
+	
+			
+			
+	<!-- sessionfactory配置到spring容器 -->			
+	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		<!-- 将连接池注入到sessionFactory -->
+		<property name="dataSource" ref="dataSource" ></property>
+		
+		<!-- 配置hibernate基本信息 -->
+ 		<property name="hibernateProperties">
+			<props>
+				<!-- 必选配置 -->			
+				<prop key="hibernate.dialect" >org.hibernate.dialect.MySQLDialect</prop>
+				 <!-- 可选配置 -->
+				<prop key="hibernate.show_sql" >true</prop>
+				<prop key="hibernate.format_sql" >true</prop>
+				<prop key="hibernate.hbm2ddl.auto" >update</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 配置Service扫描 -->
+	<context:component-scan base-package="com.anweitech.teacher.service" />
+	
+	<!-- action -->
+	<!-- service -->
+	<bean name="studentService" class="com.anweitech.teacher.service.impl.StudentServiceImpl" >
+		<property name="sd" ref="studentDao" ></property>
+	</bean>
+	<bean name="MessageProcessing" class="com.anweitech.teacher.service.impl.MessageProcessingImpl" >
+
+	</bean>
+	
+	<!-- dao -->
+	<bean name="studentDao" class="com.anweitech.teacher.dao.impl.StudentDaoImpl" >
+		<!-- 注入sessionFactory -->
+		<property name="sessionFactory" ref="sessionFactory" ></property>
+	</bean>
+	
+	<bean class="com.anweitech.teacher.pojo.InitTeacher" />
+			
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.anweitech.teacher.domain" >
+
+	<class name="TProcess" table="TProcess" >
+
+		<id name="num"  >
+			 <generator class="increment" />
+		</id>
+
+
+		<property name="sid" ></property>
+		<property name="sname" ></property>
+		<property name="status"  ></property>
+		<property name="behavior"  ></property>
+		<property name="operate"  ></property>
+		<property name="ptime"  ></property>
+		
+	</class>
+
+</hibernate-mapping>

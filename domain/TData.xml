@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.anweitech.teacher.domain" >
+
+	<class name="TData" table="data" >
+
+		<id name="num"  >
+			<generator class="assigned"></generator>
+		</id>
+
+		<property name="sid"  ></property>
+		<property name="nodeidd"  ></property>
+		<property name="subtype"  ></property>
+		<property name="datavalue"  ></property>
+		<property name="dtime"  ></property>
+		<property name="mac"  ></property>
+		<property name="encryptionflag"  ></property>
+		<property name="data"  ></property>
+		<property name="retention1"  ></property>
+		<property name="retention2"  ></property>
+
+	</class>
+
+</hibernate-mapping>

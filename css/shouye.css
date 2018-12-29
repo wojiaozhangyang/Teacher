@@ -1,0 +1,132 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+body{
+
+}
+.curriculumTitle{
+	width:100%;
+	text-align: center;
+}
+.curriculumTitle p{
+	color:gray;
+}
+.middel{
+	width:100%;
+	margin: auto;
+	margin-top:0px;
+	padding-top:50px; 
+	height:741px;
+}
+.curriculumNavigationBox{
+	width: 57%;
+	margin: auto;
+}
+.curriculumNavigationBox button{
+	width: 100px;
+	height: 40px;
+	border: 1px #D9D9D9 solid;
+	border-radius: 5px; 
+	text-align: center;
+	background-color: black;
+	outline:none;
+	color:white;
+	font-size:1.0em;
+	cursor:pointer;
+	margin-bottom: 30px;
+}
+.curriculumBox{
+	width:80%;
+	margin:auto;
+	background: white;
+	text-align: center;
+	height: auto;
+	padding-bottom: 40px;
+}
+.curriculumBox div{
+
+}
+.curriculum{
+	width:100%;
+	height:250px;
+	display:inline-block;
+	margin-left:10px; 
+	margin-right:10px;
+	margin-top:20px;
+	border-radius: 5px;
+	position: relative;
+	top:10px;
+	overflow: hidden;
+	height: auto;
+	/*transition:all 0.2s; 	动画过度时间*/
+}
+/*
+.curriculum:hover{
+	top:0px;
+	box-shadow: 0px 30px 60px -35px #888888;/* 角度 高度 模糊度 颜色 左 上 下 右 */
+	/*transition:all 0.2s; 	动画过度时间*/*/*
+}
+*/
+.curriculum table{
+
+}
+.fi1{
+	border-right:2px solid #d3d3d3;
+}
+.fi2{
+	border-left:2px solid #d3d3d3;
+}
+.fi1 div{
+	width: 100%;
+	height: 90%;
+	background-image: url(../img/system.png);
+	margin:auto;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+table{
+	/*border:1px solid #d3d3d3;*/
+	border-collapse:collapse;
+}
+.ff1{
+	width: 100%;
+	text-align: left;
+	margin-left:50px;
+	margin-top: 150px;
+	font-size:1.2em;
+}
+.ff2{
+	width: 100%;
+	margin-left:50px; 
+	margin-bottom: 10px;
+	margin-top: 56px;
+}
+.ff2 a p{
+	text-align: left;
+	width: 80%;
+	line-height: 1.6em;
+	font-size:1.4em;
+}
+.foot{
+	width:100%;
+	background:rgb(76, 76, 76);
+	color:white;
+	text-align: center;
+	height:64px;
+	position:relative;
+	bottom:0px;
+	z-index:50;
+}
+.foot div{	
+	font-size: 1.1em;
+	position:relative;
+	top:23px;
+	z-index:50;
+}
+h1{
+	font-size:3em;
+}
+
+
+

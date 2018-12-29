@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.anweitech.teacher.domain" >
+
+	<class name="GatewayKey" table="gatewaykey" >
+
+		<id name="sid"  >
+			<generator class="assigned"></generator>
+		</id>
+
+		<property name="gkeyid"  ></property>
+		<property name="gtime"  ></property>
+
+	</class>
+
+</hibernate-mapping>

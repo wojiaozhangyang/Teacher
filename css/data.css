@@ -1,0 +1,65 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.studentListBox{
+	width:100%;
+	margin:auto;
+	margin-bottom:25px;
+	height:auto;
+	min-height:40px; 
+}
+.studentListBox div{
+	margin:auto;
+	width:100%;
+	text-align: center;
+	margin-top:20px;
+	height:auto;
+	min-height:40px;
+}
+.studentListBox div button{
+	margin-top:20px;
+	width: 120px;
+	height: 40px;
+	border: 1px #D9D9D9 solid;
+	border-radius: 10px; 
+	text-align: center;
+	background-color: white;
+	outline:none;
+	font-size:1em;
+	margin-left:10px;
+	cursor:pointer;
+}
+.studentListBox button:hover{
+	transition-duration: 0.3s;
+	background:black;
+	color:white;
+}
+
+.studentDataShow{
+	width: 70%;
+	margin: auto;
+	margin-top: 50px;
+}
+.studentDataShow table{
+	width: 100%;
+	border: 1px #63B8FF solid;
+	border-radius: 10px;
+	line-height: 30px;
+	text-align: center;
+	margin-top: 10px;
+}
+.studentDataShow tr{
+	height: 30px;
+}
+.studentDataShow tr td{
+	height: 30px;
+}
+.middel{
+	width:80%;
+	height:400px;
+	margin:auto;
+}
+#mychart{
+	
+}

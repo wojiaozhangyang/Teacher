@@ -1,0 +1,94 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.studentInformationShowBox{
+	text-align: center;
+	margin:auto;
+	border: 1px #ddd  solid;
+	border-collapse: collapse;
+	font-size:1.2em;	
+}
+.studentInformationShowBox tr{
+	height:35px;
+}
+.studentInformationShowBox tr:nth-child(odd){
+	background:#ffffff;
+}
+.studentInformationShowBox tr:nth-child(even){
+	background:#f9f9f9;
+}
+.studentInformationShowBox tr td{
+	height: 30px;
+}
+.pagination{
+	text-align: center;
+}
+.middel{
+	width:100%;
+	height:648px;
+	margin-bottom:103px;
+}
+.foot{
+	width:100%;
+	background:rgb(76, 76, 76);
+	color:white;
+	text-align: center;
+	height:64px;
+	position:relative;
+	bottom:0px;
+}
+.foot div{
+	top:16px;	
+	font-size: 1.1em;
+	position:relative;
+	top:23px;
+}
+.middelTap{
+	height:500px;
+	width:70%;
+	margin:auto;
+	overflow: auto;
+}
+#past{
+	border: 1px #ddd  solid;
+	border-collapse: collapse;
+	height:40px;	
+	margin:auto;
+}
+.mm{
+	width:70%;
+	text-align: left;
+	height:40px;
+	margin:auto;
+	margin-top:40px;
+}
+.mm table{
+	border: 1px #ddd  solid;
+	border-collapse: collapse;
+	text-align: center;
+}
+.mm table tr{
+	
+}
+.middel2{
+	min-height:1362px; 
+	height:auto!important; 
+	height:1362px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+	
+	
+
+<hibernate-configuration>
+
+	<session-factory>
+
+		<property name="javax.persistence.validation.mode">none</property>
+<!-- 
+		 数据库驱动
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+
+		 数据库url
+		<property name="hibernate.connection.url">jdbc:mysql://192.168.3.49:3306/teacher?characterEncoding=utf-8</property>
+
+		 数据库连接用户名
+		<property name="hibernate.connection.username">root</property>
+
+		 数据库连接密码
+		<property name="hibernate.connection.password">root</property>
+ -->
+		<!-- 数据库方言
+			注意: MYSQL在选择方言时,请选择最短的方言.
+		 -->
+<!-- 
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+
+		将hibernate生成的sql语句打印到控制台
+		<property name="hibernate.show_sql">true</property>
+
+		将hibernate生成的sql语句格式化(语法缩进)
+		<property name="hibernate.format_sql">true</property>
+
+		
+		自动导出表结构. 自动建表
+		
+		<property name="hibernate.hbm2ddl.auto">update</property>
+ -->
+ 
+		 <!-- 引入实体配置文件 -->
+		<mapping resource="com/anweitech/teacher/domain/Student.xml" />
+		<mapping resource="com/anweitech/teacher/domain/NodeKey.xml" />
+		<mapping resource="com/anweitech/teacher/domain/NetKey.xml" />
+		<mapping resource="com/anweitech/teacher/domain/NetConsult.xml" />
+		<mapping resource="com/anweitech/teacher/domain/NConsult.xml" />
+		<mapping resource="com/anweitech/teacher/domain/GChallenge.xml" />
+		<mapping resource="com/anweitech/teacher/domain/GatewayKey.xml" />
+		<mapping resource="com/anweitech/teacher/domain/TData.xml" />
+		<mapping resource="com/anweitech/teacher/domain/Cnt.xml" />
+		<mapping resource="com/anweitech/teacher/domain/StudentAll.xml" />
+		<mapping resource="com/anweitech/teacher/domain/StudentAll_fuben.xml" />
+		<mapping resource="com/anweitech/teacher/domain/TData_fuben.xml" />
+		<mapping resource="com/anweitech/teacher/domain/TProcess.xml" />
+		<mapping resource="com/anweitech/teacher/domain/TeacherUser.xml" />
+
+	</session-factory>
+
+</hibernate-configuration>
+

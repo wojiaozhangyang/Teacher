@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.anweitech.teacher.domain" >
+
+	<class name="TeacherUser" table="teacheruser" >
+
+		<id name="user"  >
+			<generator class="assigned"></generator>
+		</id>
+
+		<property name="pass"  ></property>
+
+
+	</class>
+
+</hibernate-mapping>
